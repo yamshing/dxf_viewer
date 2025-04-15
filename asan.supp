@@ -1,0 +1,3 @@
+leak:FcValueSave
+leak:FcLangSetCreate
+leak:libfontconfig.so
