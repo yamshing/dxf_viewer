@@ -51,7 +51,6 @@ add_library(DrawableLib STATIC ${DRAWABLE_SRC} ${WX_FRAME_SRC})
 # Link the shared library to the main project
 add_executable(${PROJECT_NAME} WIN32 MACOSX_BUNDLE main.cpp)
 target_link_libraries(${PROJECT_NAME} DrawableLib ${wxWidgets_LIBRARIES})
-target_link_libraries(${PROJECT_NAME} ${GTEST_LIB_DIR}/libgtest.a ${GTEST_LIB_DIR}/libgtest_main.a Threads::Threads)
 target_link_libraries(${PROJECT_NAME} ${DXFRW_LIB})
 
 # Add an option to toggle between AddressSanitizer and Valgrind
