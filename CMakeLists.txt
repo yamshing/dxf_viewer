@@ -21,25 +21,23 @@ set(THREADS_PREFER_PTHREAD_FLAG ON)
 find_package(Threads REQUIRED)
 find_package(nlohmann_json 3.2.0 REQUIRED)
 
-set(wxWidgets_ROOT_DIR "$ENV{HOME}/lib/wxwidget_3_2_7")
-set(wxWidgets_LIB_DIR "${wxWidgets_ROOT_DIR}/lib/wx")
-set(wxWidgets_INCLUDE_DIRS "${wxWidgets_ROOT_DIR}/include/wx-3.2")
-set(CMAKE_PREFIX_PATH "${wxWidgets_ROOT_DIR}")
-set(DXFRW_LIB /usr/local/lib/libdxfrw.a)
-set(DXFRW_INCLUDE_DIR /usr/local/include)
-set(GTEST_LIB_DIR /home/shingo/source_code/git/googletest_git/googletest/build/lib)
-set(GTEST_INCLUDE_DIR /home/shingo/source_code/git/googletest_git/googletest/googletest/include)
+
+set(DXFRW_LIB "/usr/local/lib/libdxfrw.a" CACHE FILEPATH "Path to the DXFRW library")
+set(DXFRW_INCLUDE_DIR "/usr/local/include/libdxfrw" CACHE PATH "Path to the DXFRW include directory")
+set(GTEST_LIB_DIR "/usr/lib" CACHE PATH "Path to GoogleTest library directory")
+set(GTEST_INCLUDE_DIR "/usr/include" CACHE PATH "Path to GoogleTest include directory")
+
 
 find_package(wxWidgets 3.2 COMPONENTS core base REQUIRED )
 
 if(wxWidgets_USE_FILE)
-    include(${wxWidgets_USE_FILE})
+     include(${wxWidgets_USE_FILE})
 endif()
 
 include_directories(${CMAKE_CURRENT_SOURCE_DIR})
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/wx_ui)
 include_directories(${wxWidgets_INCLUDE_DIRS})
-include_directories(${DXFRW_INCLUDE_DIR} /usr/local/include/libdxfrw)
+include_directories(${DXFRW_INCLUDE_DIR})
 include_directories(${GTEST_INCLUDE_DIR})
 
 set(WX_FRAME_SRC wx_ui/app.cpp wx_ui/frame.cpp wx_ui/page.cpp)
