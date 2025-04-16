@@ -2,6 +2,7 @@
 #include "line.h"
 #include "circle.h"
 #include "rectangle.h"
+#include "dxf_text.h"
 
 DxfInterfaceImpl::DxfInterfaceImpl() {
     rootNode = std::make_shared<Node>(0); // Create the root node
@@ -39,7 +40,10 @@ void DxfInterfaceImpl::addLWPolyline(const DRW_LWPolyline& data) {
 }
 
 void DxfInterfaceImpl::addText(const DRW_Text& data) {
-    // Handle text entities if needed
+    auto drawable = std::make_shared<DxfText>(data.text, data.basePoint.x, data.basePoint.y, data.height);
+    auto node = std::make_shared<Node>(0, drawable);
+    nodes.push_back(node);
+    rootNode->addChild(node);
 }
 
 void DxfInterfaceImpl::addMText(const DRW_MText& data) {

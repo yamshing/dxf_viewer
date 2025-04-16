@@ -43,7 +43,7 @@ include_directories(${DXFRW_INCLUDE_DIR} /usr/local/include/libdxfrw)
 include_directories(${GTEST_INCLUDE_DIR})
 
 set(WX_FRAME_SRC wx_ui/app.cpp wx_ui/frame.cpp wx_ui/page.cpp)
-set(DRAWABLE_SRC node.cpp drawable.cpp rectangle.cpp circle.cpp line.cpp dxf_interface_impl.cpp) # Add dxf_interface_impl.cpp
+set(DRAWABLE_SRC node.cpp drawable.cpp rectangle.cpp circle.cpp line.cpp dxf_interface_impl.cpp dxf_text.cpp) # Add dxf_text.cpp
 
 # Define a static library for shared sources
 add_library(DrawableLib STATIC ${DRAWABLE_SRC} ${WX_FRAME_SRC})
