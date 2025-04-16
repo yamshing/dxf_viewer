@@ -1,4 +1,3 @@
 #include "drawable.h"
 
-Drawable::Drawable(int x, int y, int width, int height)
-    : x(x), y(y), width(width), height(height) {}
+Drawable::Drawable(int x, int y) : x(x), y(y) {}
