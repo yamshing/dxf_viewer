@@ -13,19 +13,33 @@ void DxfInterfaceImpl::addHeader(const DRW_Header* data) {
 }
 
 void DxfInterfaceImpl::addLine(const DRW_Line& data) {
-    
+    std::string lineStyle = data.lineType.empty() ? "CONTINUOUS" : data.lineType; // Default to CONTINUOUS if lineType is empty
+
+    std::cout << "Line Data: "
+              << "Base Point: (" << data.basePoint.x << ", " << data.basePoint.y << ") "
+              << "Second Point: (" << data.secPoint.x << ", " << data.secPoint.y << ") "
+              << "Color: " << data.color << " "
+              << "Line Style: " << lineStyle << std::endl;
 
     auto drawable = std::make_shared<Line>(data.basePoint.x, data.basePoint.y,
                                            data.secPoint.x, data.secPoint.y,
-                                           data.color); // Parse color from DXF data
+                                           data.color, lineStyle);
     auto node = std::make_shared<Node>(0, drawable);
     nodes.push_back(node);
     rootNode->addChild(node);
 }
 
 void DxfInterfaceImpl::addCircle(const DRW_Circle& data) {
-    
-    auto drawable = std::make_shared<Circle>(data.basePoint.x, data.basePoint.y, data.radious, data.color); // Parse color from DXF data
+    std::string lineStyle = data.lineType.empty() ? "CONTINUOUS" : data.lineType; // Default to CONTINUOUS if lineType is empty
+
+    std::cout << "Circle Data: "
+              << "Center Point: (" << data.basePoint.x << ", " << data.basePoint.y << ") "
+              << "Radius: " << data.radious << " "
+              << "Color: " << data.color << " "
+              << "Line Style: " << lineStyle << std::endl;
+
+    auto drawable = std::make_shared<Circle>(data.basePoint.x, data.basePoint.y,
+                                             data.radious, data.color, lineStyle);
     auto node = std::make_shared<Node>(0, drawable);
     nodes.push_back(node);
     rootNode->addChild(node);

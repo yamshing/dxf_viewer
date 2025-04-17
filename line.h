@@ -4,11 +4,12 @@
 #include "drawable.h"
 #include <wx/dc.h>
 #include <iostream>
+#include <string>
 
 
 class Line : public Drawable {
 public:
-    Line(int x1, int y1, int x2, int y2, int color);
+    Line(int x1, int y1, int x2, int y2, int color, const std::string& lineStyle);
 
     void draw(wxDC& dc) const override;
 

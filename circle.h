@@ -5,7 +5,7 @@
 
 class Circle : public Drawable {
 public:
-    Circle(int x, int y, int radius, int color);
+    Circle(int x, int y, int radius, int color, const std::string& lineStyle);
 
     void draw(wxDC& dc) const override;
 
