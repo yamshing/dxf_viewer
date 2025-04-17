@@ -24,6 +24,12 @@ void DxfInterfaceImpl::addLine(const DRW_Line& data) {
     auto drawable = std::make_shared<Line>(data.basePoint.x, data.basePoint.y,
                                            data.secPoint.x, data.secPoint.y,
                                            data.color, lineStyle);
+
+    // Set the line style pattern if available
+    if (lineTypePatterns.find(lineStyle) != lineTypePatterns.end()) {
+        drawable->setLineStylePattern(lineTypePatterns[lineStyle]);
+    }
+
     auto node = std::make_shared<Node>(0, drawable);
     nodes.push_back(node);
     rootNode->addChild(node);
@@ -40,6 +46,12 @@ void DxfInterfaceImpl::addCircle(const DRW_Circle& data) {
 
     auto drawable = std::make_shared<Circle>(data.basePoint.x, data.basePoint.y,
                                              data.radious, data.color, lineStyle);
+
+    // Set the line style pattern if available
+    if (lineTypePatterns.find(lineStyle) != lineTypePatterns.end()) {
+        drawable->setLineStylePattern(lineTypePatterns[lineStyle]);
+    }
+
     auto node = std::make_shared<Node>(0, drawable);
     nodes.push_back(node);
     rootNode->addChild(node);
@@ -109,7 +121,21 @@ void DxfInterfaceImpl::linkImage(const DRW_ImageDef* data) {
 }
 
 void DxfInterfaceImpl::addLType(const DRW_LType& data) {
-    // Handle line types if needed
+    std::vector<double> pattern;
+
+    // Parse the dash pattern from the DRW_LType data
+    for (double dash : data.path) { // Corrected to use `dashes` instead of `dashList`
+        pattern.push_back(dash);
+    }
+
+    std::cout << "Line Type: " << data.name << " Pattern: ";
+    for (const auto& dash : pattern) {
+        std::cout << dash << " ";
+    }
+    std::cout << std::endl;
+
+    // Store the pattern in a map for later use
+    lineTypePatterns[data.name] = pattern;
 }
 
 void DxfInterfaceImpl::addLayer(const DRW_Layer& data) {

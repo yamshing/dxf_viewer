@@ -18,13 +18,16 @@ wxColour Drawable::convertDxfColorToWxColour(int dxfColor) {
 }
 
 void Drawable::setLineStyle(wxPen& pen) const {
-    pen.SetStyle(wxPENSTYLE_SOLID); // Default to solid style
+    pen.SetStyle(wxPENSTYLE_USER_DASH); // Use custom dash pattern
 
-    if (lineStyle == "DASHED") {
-        pen.SetStyle(wxPENSTYLE_SHORT_DASH);
-    } else if (lineStyle == "DOTTED") {
-        pen.SetStyle(wxPENSTYLE_DOT);
-    } else if (lineStyle == "DASHDOT") {
-        pen.SetStyle(wxPENSTYLE_DOT_DASH);
+    if (!lineStylePattern.empty()) {
+        wxDash* dashes = new wxDash[lineStylePattern.size()];
+        for (size_t i = 0; i < lineStylePattern.size(); ++i) {
+            dashes[i] = static_cast<int>(lineStylePattern[i] * 10); // Scale pattern to match wxDash units
+        }
+        pen.SetDashes(lineStylePattern.size(), dashes);
+        delete[] dashes;
+    } else {
+        pen.SetStyle(wxPENSTYLE_SOLID); // Default to solid style if no pattern is set
     }
 }

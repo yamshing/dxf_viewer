@@ -5,6 +5,8 @@
 #include "node.h"
 #include <memory>
 #include <vector>
+#include <map>
+#include <string>
 
 class DxfInterfaceImpl : public DRW_Interface {
 public:
@@ -72,6 +74,7 @@ public:
 private:
     std::shared_ptr<Node> rootNode;
     std::vector<std::shared_ptr<Node>> nodes;
+    std::map<std::string, std::vector<double>> lineTypePatterns; // Added to store line type patterns
 };
 
 #endif // DXF_INTERFACE_IMPL_H
