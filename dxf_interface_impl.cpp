@@ -13,15 +13,22 @@ void DxfInterfaceImpl::addHeader(const DRW_Header* data) {
 }
 
 void DxfInterfaceImpl::addLine(const DRW_Line& data) {
+    std::cout << "Line Data: "
+              << "Base Point: (" << data.basePoint.x << ", " << data.basePoint.y << ") "
+              << "Second Point: (" << data.secPoint.x << ", " << data.secPoint.y << ") "
+              << "Color: " << data.color << std::endl;
+
     auto drawable = std::make_shared<Line>(data.basePoint.x, data.basePoint.y,
-                                           data.secPoint.x, data.secPoint.y);
+                                           data.secPoint.x, data.secPoint.y,
+                                           data.color); // Parse color from DXF data
     auto node = std::make_shared<Node>(0, drawable);
     nodes.push_back(node);
     rootNode->addChild(node);
 }
 
 void DxfInterfaceImpl::addCircle(const DRW_Circle& data) {
-    auto drawable = std::make_shared<Circle>(data.basePoint.x, data.basePoint.y, data.radious);
+    
+    auto drawable = std::make_shared<Circle>(data.basePoint.x, data.basePoint.y, data.radious, data.color); // Parse color from DXF data
     auto node = std::make_shared<Node>(0, drawable);
     nodes.push_back(node);
     rootNode->addChild(node);
@@ -40,7 +47,7 @@ void DxfInterfaceImpl::addLWPolyline(const DRW_LWPolyline& data) {
 }
 
 void DxfInterfaceImpl::addText(const DRW_Text& data) {
-    auto drawable = std::make_shared<DxfText>(data.text, data.basePoint.x, data.basePoint.y, data.height);
+    auto drawable = std::make_shared<DxfText>(data.text, data.basePoint.x, data.basePoint.y, data.height, data.color); // Parse color from DXF data
     auto node = std::make_shared<Node>(0, drawable);
     nodes.push_back(node);
     rootNode->addChild(node);

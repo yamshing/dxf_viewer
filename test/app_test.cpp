@@ -225,6 +225,43 @@ TEST(AppTest, OpenDxfAndShowInPage) {
     wxEntryCleanup();
 }
 
+TEST(AppTest, OpenColoredLinesDxf) {
+    // Ensure the result_image directory exists
+    EnsureDirectoryExists("result_image");
+
+    // Path to the DXF file
+    std::string dxfFilePath = "../test/test_dxf/colored_lines.dxf";
+
+    // Initialize wxWidgets without launching the main loop
+    int argc = 0;
+    char** argv = nullptr;
+    wxApp* pApp = new App(dxfFilePath, true); // Pass true to indicate DXF input
+    wxApp::SetInstance(pApp);
+    wxEntryStart(argc, argv);
+
+    // Run the app initialization
+    ASSERT_TRUE(wxTheApp->CallOnInit());
+
+    // Get the Frame and verify it is initialized
+    Frame* frame = dynamic_cast<Frame*>(wxTheApp->GetTopWindow());
+    ASSERT_NE(frame, nullptr);
+
+    // Retrieve the wxNotebook using its unique ID
+    wxNotebook* notebook = wxDynamicCast(frame->FindWindow(Frame::NOTEBOOK_ID), wxNotebook);
+    ASSERT_NE(notebook, nullptr);
+
+    // Verify the first page of the notebook
+    Page* page = dynamic_cast<Page*>(notebook->GetPage(0));
+    ASSERT_NE(page, nullptr);
+
+    // Call the refactored function to draw and save the bitmap
+    DrawAndSaveBitmap(page, 200, 200, "open_colored_lines_dxf");
+
+    // Clean up wxWidgets
+    wxTheApp->OnExit();
+    wxEntryCleanup();
+}
+
 // Main function for Google Test
 int main(int argc, char** argv) {
     // Suppress wxWidgets GUI initialization

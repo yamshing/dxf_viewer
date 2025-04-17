@@ -7,7 +7,7 @@
 
 class Rectangle : public Drawable {
 public:
-    Rectangle(int x, int y, int width, int height);
+    Rectangle(int x, int y, int width, int height, int color);
     ~Rectangle() override = default;
     void draw(wxDC& dc) const override;
 
@@ -18,7 +18,7 @@ public:
     int getHeight() const { return height; }
 
 private:
-    int x, y, width, height;
+    int x, y, width, height, color;
 };
 
 #endif // RECTANGLE_H

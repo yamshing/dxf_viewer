@@ -5,16 +5,16 @@
 
 class Circle : public Drawable {
 public:
-    Circle(int x, int y, int radius);
+    Circle(int x, int y, int radius, int color);
 
-    void draw(wxDC& dc) const override; // Update to match Drawable's method signature
+    void draw(wxDC& dc) const override;
 
     int getX() const { return x; }
     int getY() const { return y; }
     int getRadius() const { return radius; }
 
 private:
-    int x, y, radius;
+    int x, y, radius, color;
 };
 
 #endif // CIRCLE_H

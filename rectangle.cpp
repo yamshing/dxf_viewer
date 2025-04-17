@@ -1,10 +1,10 @@
 #include "rectangle.h"
 
-Rectangle::Rectangle(int x, int y, int width, int height)
-    : Drawable(x, y), x(x), y(y), width(width), height(height) {}
+Rectangle::Rectangle(int x, int y, int width, int height, int color)
+    : Drawable(x, y, color), width(width), height(height) {}
 
 void Rectangle::draw(wxDC& dc) const {
-    dc.SetPen(*wxBLACK_PEN);
+    dc.SetPen(wxPen(Drawable::convertDxfColorToWxColour(color), 1));
     dc.SetBrush(*wxTRANSPARENT_BRUSH);
     dc.DrawRectangle(x, y, width, height);
 }

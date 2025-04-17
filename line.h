@@ -3,10 +3,12 @@
 
 #include "drawable.h"
 #include <wx/dc.h>
+#include <iostream>
+
 
 class Line : public Drawable {
 public:
-    Line(int x1, int y1, int x2, int y2);
+    Line(int x1, int y1, int x2, int y2, int color);
 
     void draw(wxDC& dc) const override;
 
@@ -14,9 +16,11 @@ public:
     int getY1() const { return y1; }
     int getX2() const { return x2; }
     int getY2() const { return y2; }
+    int getColor() const { return color; }
 
 private:
     int x1, y1, x2, y2;
+    //int color;
 };
 
 #endif // LINE_H

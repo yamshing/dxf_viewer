@@ -51,17 +51,18 @@ std::shared_ptr<Node> Node::fromJson(const std::string& jsonString) {
 
     std::function<std::shared_ptr<Node>(const json&)> parseNode = [&](const json& nodeData) -> std::shared_ptr<Node> {
         int value = nodeData.value("value", 0);
+        int color = nodeData.value("color", 0); // Default color to 0
         std::shared_ptr<Drawable> drawable;
 
         if (nodeData["type"] == "rectangle") {
             drawable = std::make_shared<Rectangle>(
-                nodeData["x"], nodeData["y"], nodeData["width"], nodeData["height"]);
+                nodeData["x"], nodeData["y"], nodeData["width"], nodeData["height"], color);
         } else if (nodeData["type"] == "circle") {
             drawable = std::make_shared<Circle>(
-                nodeData["x"], nodeData["y"], nodeData["radius"]); // Ensure x, y, and radius are passed correctly
+                nodeData["x"], nodeData["y"], nodeData["radius"], color); // Ensure x, y, radius, and color are passed correctly
         } else if (nodeData["type"] == "line") { // Add support for line
             drawable = std::make_shared<Line>(
-                nodeData["x1"], nodeData["y1"], nodeData["x2"], nodeData["y2"]);
+                nodeData["x1"], nodeData["y1"], nodeData["x2"], nodeData["y2"], color);
         }
 
         auto node = std::make_shared<Node>(value, drawable);

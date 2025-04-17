@@ -7,7 +7,7 @@
 
 class DxfText : public Drawable {
 public:
-    DxfText(const std::string& content, double x, double y, double height);
+    DxfText(const std::string& content, double x, double y, double height, int color);
 
     void draw(wxDC& dc) const override;
 
@@ -15,6 +15,7 @@ private:
     std::string content;
     double x, y;
     double height;
+    int color;
 };
 
 #endif // DXF_TEXT_H
