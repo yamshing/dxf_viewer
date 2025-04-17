@@ -26,7 +26,7 @@ public:
     // Setter for lineStyle
     void setLineStyle(const std::string& style) { lineStyle = style; }
 
-    void setLineStyle(wxPen& pen) const; // Updated to use lineStylePattern
+    void setLineStyle(wxPen& pen, wxDC& dc) const; // Updated to use lineStylePattern
 
     // Setter for lineStylePattern
     void setLineStylePattern(const std::vector<double>& pattern) { lineStylePattern = pattern; }

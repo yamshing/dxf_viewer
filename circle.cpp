@@ -6,8 +6,7 @@ Circle::Circle(int x, int y, int radius, int color, const std::string& lineStyle
 
 void Circle::draw(wxDC& dc) const {
     wxPen pen(Drawable::convertDxfColorToWxColour(color), 1);
-    setLineStyle(pen); // Use the new setLineStyle function
-    dc.SetPen(pen);
+    setLineStyle(pen,dc); // Use the new setLineStyle function
     dc.SetBrush(*wxTRANSPARENT_BRUSH);
     dc.DrawCircle(x, y, radius);
 }

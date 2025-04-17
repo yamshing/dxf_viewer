@@ -17,17 +17,20 @@ wxColour Drawable::convertDxfColorToWxColour(int dxfColor) {
     }
 }
 
-void Drawable::setLineStyle(wxPen& pen) const {
-    pen.SetStyle(wxPENSTYLE_USER_DASH); // Use custom dash pattern
+void Drawable::setLineStyle(wxPen& pen,wxDC& dc) const {
 
     if (!lineStylePattern.empty()) {
+        pen.SetStyle(wxPENSTYLE_USER_DASH); // Use custom dash pattern
+
         wxDash* dashes = new wxDash[lineStylePattern.size()];
         for (size_t i = 0; i < lineStylePattern.size(); ++i) {
             dashes[i] = static_cast<int>(lineStylePattern[i] * 10); // Scale pattern to match wxDash units
         }
         pen.SetDashes(lineStylePattern.size(), dashes);
-        delete[] dashes;
+        dc.SetPen(pen);
+        delete[] dashes; 
     } else {
-        pen.SetStyle(wxPENSTYLE_SOLID); // Default to solid style if no pattern is set
+        //pen.SetStyle(wxPENSTYLE_SOLID); // Default to solid style if no pattern is set
+        dc.SetPen(pen);
     }
 }

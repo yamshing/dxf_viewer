@@ -15,11 +15,11 @@ void DxfInterfaceImpl::addHeader(const DRW_Header* data) {
 void DxfInterfaceImpl::addLine(const DRW_Line& data) {
     std::string lineStyle = data.lineType.empty() ? "CONTINUOUS" : data.lineType; // Default to CONTINUOUS if lineType is empty
 
-    std::cout << "Line Data: "
-              << "Base Point: (" << data.basePoint.x << ", " << data.basePoint.y << ") "
-              << "Second Point: (" << data.secPoint.x << ", " << data.secPoint.y << ") "
-              << "Color: " << data.color << " "
-              << "Line Style: " << lineStyle << std::endl;
+    // std::cout << "Line Data: "
+    //           << "Base Point: (" << data.basePoint.x << ", " << data.basePoint.y << ") "
+    //           << "Second Point: (" << data.secPoint.x << ", " << data.secPoint.y << ") "
+    //           << "Color: " << data.color << " "
+    //           << "Line Style: " << lineStyle << std::endl;
 
     auto drawable = std::make_shared<Line>(data.basePoint.x, data.basePoint.y,
                                            data.secPoint.x, data.secPoint.y,
@@ -38,11 +38,11 @@ void DxfInterfaceImpl::addLine(const DRW_Line& data) {
 void DxfInterfaceImpl::addCircle(const DRW_Circle& data) {
     std::string lineStyle = data.lineType.empty() ? "CONTINUOUS" : data.lineType; // Default to CONTINUOUS if lineType is empty
 
-    std::cout << "Circle Data: "
+    /*std::cout << "Circle Data: "
               << "Center Point: (" << data.basePoint.x << ", " << data.basePoint.y << ") "
               << "Radius: " << data.radious << " "
               << "Color: " << data.color << " "
-              << "Line Style: " << lineStyle << std::endl;
+              << "Line Style: " << lineStyle << std::endl;*/
 
     auto drawable = std::make_shared<Circle>(data.basePoint.x, data.basePoint.y,
                                              data.radious, data.color, lineStyle);
@@ -128,11 +128,11 @@ void DxfInterfaceImpl::addLType(const DRW_LType& data) {
         pattern.push_back(dash);
     }
 
-    std::cout << "Line Type: " << data.name << " Pattern: ";
+    /*std::cout << "Line Type: " << data.name << " Pattern: ";
     for (const auto& dash : pattern) {
         std::cout << dash << " ";
     }
-    std::cout << std::endl;
+    std::cout << std::endl;*/
 
     // Store the pattern in a map for later use
     lineTypePatterns[data.name] = pattern;
