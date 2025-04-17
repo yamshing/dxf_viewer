@@ -96,7 +96,7 @@ TEST(NodeTest, FromJson) {
 // Test for reading a circle from a DXF file
 TEST(NodeTest, ReadCircleFromDxf) {
     // Path to the test DXF file
-    std::string dxfFilePath = "../test/circle.dxf";
+    std::string dxfFilePath = "../test/test_dxf/circle.dxf";
 
     // Parse the DXF file
     std::shared_ptr<Node> rootNode;

@@ -193,7 +193,7 @@ TEST(AppTest, OpenDxfAndShowInPage) {
     EnsureDirectoryExists("result_image");
 
     // Path to the DXF file
-    std::string dxfFilePath = "../test/circle.dxf";
+    std::string dxfFilePath = "../test/test_dxf/circle.dxf";
 
     // Initialize wxWidgets without launching the main loop
     int argc = 0;
