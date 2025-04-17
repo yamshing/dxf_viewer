@@ -34,7 +34,7 @@ public:
     void drawTree(const std::function<void(const Drawable&)>& drawCallback) const; // Update drawTree to use callback
 
     // Static method to construct a node tree from a JSON string
-    static std::shared_ptr<Node> fromJson(const std::string& jsonString); // Update return type to shared_ptr
+    //static std::shared_ptr<Node> fromJson(const std::string& jsonString); // Update return type to shared_ptr
 
     // Static method to construct a node tree from a DXF file
     static std::shared_ptr<Node> fromDxf(const std::string& dxfFilePath); // Add fromDxf method declaration

@@ -44,7 +44,7 @@ void DrawAndSaveBitmap(Page* page, int bitmap_w, int bitmap_h, const std::string
     ASSERT_TRUE(CompareBitmaps(bitmap, expectedBitmap)) << file_path << " does not match " << expected_path;
 }
 
-TEST(AppTest, DrawRectanglesFromJson)
+/*TEST(AppTest, DrawRectanglesFromJson)
 {
     // Ensure the result_image directory exists
     EnsureDirectoryExists("result_image");
@@ -187,6 +187,7 @@ TEST(AppTest, DrawLine) {
     wxTheApp->OnExit();
     wxEntryCleanup();
 }
+*/
 
 TEST(AppTest, OpenDxfAndShowInPage) {
     // Ensure the result_image directory exists

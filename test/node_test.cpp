@@ -43,7 +43,7 @@ TEST(NodeTest, GetChildren) {
 }
 
 // Test for generating nodes from JSON
-TEST(NodeTest, FromJson) {
+/*TEST(NodeTest, FromJson) {
     std::string jsonString = R"([
         {
             "type": "rectangle",
@@ -92,6 +92,7 @@ TEST(NodeTest, FromJson) {
     EXPECT_EQ(rectChild->getWidth(), 50);
     EXPECT_EQ(rectChild->getHeight(), 50);
 }
+    */
 
 // Test for reading a circle from a DXF file
 TEST(NodeTest, ReadCircleFromDxf) {

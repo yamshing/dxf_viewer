@@ -46,12 +46,12 @@ void Node::drawTree(const std::function<void(const Drawable&)>& drawCallback) co
 }
 
 // Static method to construct a node tree from a JSON string
-std::shared_ptr<Node> Node::fromJson(const std::string& jsonString) {
+/*std::shared_ptr<Node> Node::fromJson(const std::string& jsonString) {
     json jsonData = json::parse(jsonString);
 
     std::function<std::shared_ptr<Node>(const json&)> parseNode = [&](const json& nodeData) -> std::shared_ptr<Node> {
         int value = nodeData.value("value", 0);
-        int color = nodeData.value("color", 0); // Default color to 0
+        int color = nodeData.value("color", 7); // Default color to 0
         std::shared_ptr<Drawable> drawable;
 
         if (nodeData["type"] == "rectangle") {
@@ -83,6 +83,7 @@ std::shared_ptr<Node> Node::fromJson(const std::string& jsonString) {
 
     throw std::invalid_argument("Invalid JSON format for Node tree");
 }
+*/
 
 // Static method to construct a node tree from a DXF file
 std::shared_ptr<Node> Node::fromDxf(const std::string& dxfFilePath) {
@@ -133,3 +134,5 @@ json Node::toJson(bool isRoot) const {
 
     return isRoot ? json::array({nodeData}) : nodeData; // Wrap in array only if it's the root node
 }
+
+

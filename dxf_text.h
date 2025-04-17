@@ -13,7 +13,7 @@ public:
 
 private:
     std::string content;
-    double x, y;
+    //double x, y;
     double height;
     
 };
