@@ -13,10 +13,7 @@ void DxfInterfaceImpl::addHeader(const DRW_Header* data) {
 }
 
 void DxfInterfaceImpl::addLine(const DRW_Line& data) {
-    std::cout << "Line Data: "
-              << "Base Point: (" << data.basePoint.x << ", " << data.basePoint.y << ") "
-              << "Second Point: (" << data.secPoint.x << ", " << data.secPoint.y << ") "
-              << "Color: " << data.color << std::endl;
+    
 
     auto drawable = std::make_shared<Line>(data.basePoint.x, data.basePoint.y,
                                            data.secPoint.x, data.secPoint.y,

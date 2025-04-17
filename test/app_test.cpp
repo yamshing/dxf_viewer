@@ -255,7 +255,7 @@ TEST(AppTest, OpenColoredLinesDxf) {
     ASSERT_NE(page, nullptr);
 
     // Call the refactored function to draw and save the bitmap
-    DrawAndSaveBitmap(page, 200, 200, "open_colored_lines_dxf");
+    DrawAndSaveBitmap(page, 400, 400, "open_colored_lines_dxf");
 
     // Clean up wxWidgets
     wxTheApp->OnExit();
