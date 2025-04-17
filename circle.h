@@ -14,7 +14,7 @@ public:
     int getRadius() const { return radius; }
 
 private:
-    int x, y, radius, color;
+    int x, y, radius;
 };
 
 #endif // CIRCLE_H

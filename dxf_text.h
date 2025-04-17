@@ -15,7 +15,7 @@ private:
     std::string content;
     double x, y;
     double height;
-    int color;
+    
 };
 
 #endif // DXF_TEXT_H

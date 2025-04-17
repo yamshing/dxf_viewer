@@ -18,7 +18,7 @@ public:
     int getHeight() const { return height; }
 
 private:
-    int x, y, width, height, color;
+    int x, y, width, height;
 };
 
 #endif // RECTANGLE_H
