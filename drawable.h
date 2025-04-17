@@ -23,6 +23,8 @@ public:
     const std::string& getLineStyle() const { return lineStyle; }
     // Setter for lineStyle
     void setLineStyle(const std::string& style) { lineStyle = style; }
+
+    void setLineStyle(wxPen& pen) const; // Added setLineStyle function declaration
 };
 
 #endif // DRAWABLE_H

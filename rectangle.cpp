@@ -5,16 +5,7 @@ Rectangle::Rectangle(int x, int y, int width, int height, int color, const std::
 
 void Rectangle::draw(wxDC& dc) const {
     wxPen pen(Drawable::convertDxfColorToWxColour(color), 1);
-    pen.SetStyle(wxPENSTYLE_SOLID); // Default to solid style
-
-    if (lineStyle == "DASHED") {
-        pen.SetStyle(wxPENSTYLE_SHORT_DASH);
-    } else if (lineStyle == "DOTTED") {
-        pen.SetStyle(wxPENSTYLE_DOT);
-    } else if (lineStyle == "DASHDOT") {
-        pen.SetStyle(wxPENSTYLE_DOT_DASH);
-    }
-
+    setLineStyle(pen); // Use the new setLineStyle function
     dc.SetPen(pen);
     dc.SetBrush(*wxTRANSPARENT_BRUSH);
     dc.DrawRectangle(x, y, width, height);

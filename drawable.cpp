@@ -16,3 +16,15 @@ wxColour Drawable::convertDxfColorToWxColour(int dxfColor) {
         default: return wxColour(0, 0, 0);    // Default to Black
     }
 }
+
+void Drawable::setLineStyle(wxPen& pen) const {
+    pen.SetStyle(wxPENSTYLE_SOLID); // Default to solid style
+
+    if (lineStyle == "DASHED") {
+        pen.SetStyle(wxPENSTYLE_SHORT_DASH);
+    } else if (lineStyle == "DOTTED") {
+        pen.SetStyle(wxPENSTYLE_DOT);
+    } else if (lineStyle == "DASHDOT") {
+        pen.SetStyle(wxPENSTYLE_DOT_DASH);
+    }
+}
