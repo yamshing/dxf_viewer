@@ -24,7 +24,7 @@ void Drawable::setLineStyle(wxPen& pen,wxDC& dc) const {
 
         wxDash* dashes = new wxDash[lineStylePattern.size()];
         for (size_t i = 0; i < lineStylePattern.size(); ++i) {
-            dashes[i] = static_cast<int>(lineStylePattern[i] * 10); // Scale pattern to match wxDash units
+            dashes[i] = static_cast<int>(lineStylePattern[i]); 
         }
         pen.SetDashes(lineStylePattern.size(), dashes);
         dc.SetPen(pen);
