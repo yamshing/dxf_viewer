@@ -12,8 +12,9 @@ public:
     int color; // Added color information
     std::string lineStyle; // Added lineStyle property
     std::vector<double> lineStylePattern; // Added lineStylePattern to store dash patterns
+    double lineWidth; // Added lineWidth property
 
-    Drawable(int x, int y, int color, const std::string& lineStyle = "CONTINUOUS"); // Updated constructor
+    Drawable(int x, int y, int color, const std::string& lineStyle = "CONTINUOUS", double lineWidth = 1.0); // Updated constructor
 
     virtual ~Drawable() = default;
 
@@ -32,6 +33,11 @@ public:
     void setLineStylePattern(const std::vector<double>& pattern) { lineStylePattern = pattern; }
     // Getter for lineStylePattern
     const std::vector<double>& getLineStylePattern() const { return lineStylePattern; }
+
+    // Getter for lineWidth
+    double getLineWidth() const { return lineWidth; }
+    // Setter for lineWidth
+    void setLineWidth(double width) { lineWidth = width; }
 };
 
 #endif // DRAWABLE_H

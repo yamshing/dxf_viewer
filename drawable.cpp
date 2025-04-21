@@ -1,8 +1,8 @@
 #include "drawable.h"
 #include <wx/colour.h>
 
-Drawable::Drawable(int x, int y, int color, const std::string& lineStyle)
-    : x(x), y(y), color(color), lineStyle(lineStyle) {}
+Drawable::Drawable(int x, int y, int color, const std::string& lineStyle, double lineWidth)
+    : x(x), y(y), color(color), lineStyle(lineStyle), lineWidth(lineWidth) {}
 
 wxColour Drawable::convertDxfColorToWxColour(int dxfColor) {
     switch (dxfColor) {
