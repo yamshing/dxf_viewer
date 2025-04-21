@@ -24,9 +24,8 @@ void DxfInterfaceImpl::addLine(const DRW_Line& data) {
         drawable->setLineStylePattern(lineTypePatterns[lineStyle]);
     }
 
-    if (data.lWeight > 0) {
-        drawable->setLineWidth(data.lWeight);
-    }
+    // Set the line width using the enum conversion method
+    drawable->setLineWidthFromEnum(data.lWeight);
 
     auto node = std::make_shared<Node>(0, drawable);
     nodes.push_back(node);
@@ -44,10 +43,8 @@ void DxfInterfaceImpl::addCircle(const DRW_Circle& data) {
         drawable->setLineStylePattern(lineTypePatterns[lineStyle]);
     }
 
-    // Set the line width from DXF data
-    if (data.lWeight > 0) {
-        drawable->setLineWidth(data.lWeight); 
-    }
+    // Set the line width using the enum conversion method
+    drawable->setLineWidthFromEnum(data.lWeight);
 
     auto node = std::make_shared<Node>(0, drawable);
     nodes.push_back(node);

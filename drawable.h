@@ -38,6 +38,9 @@ public:
     double getLineWidth() const { return lineWidth; }
     // Setter for lineWidth
     void setLineWidth(double width) { lineWidth = width; }
+
+    // Add declaration for setLineWidthFromEnum
+    void setLineWidthFromEnum(int lWeightEnum);
 };
 
 #endif // DRAWABLE_H
